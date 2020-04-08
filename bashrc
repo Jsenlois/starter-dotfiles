@@ -1,49 +1,32 @@
-# .bashrc
+# enables colorin the terminal bash shell export
+export CLICOLOR=1
+# sets up thecolor scheme for list export
+export LSCOLORS=gxfxcxdxbxegedabagacad
+# sets up theprompt color (currently a green similar to linux terminal)
+export PS1='\[\033[01;32m\]\u\[\033[00m\]:\[\033[01;36m\]\w\[\033[00m\]\$ '
+# enables colorfor iTerm
+export TERM=xterm-color
 
-# Source global definitions
-if [ -f /etc/bashrc ]; then
-  . /etc/bashrc
-fi
+eval `keychain --eval id_rsa`
+eval `keychain --eval github`
 
-# don't put duplicate lines in the history. See bash(1) for more options
-# ... or force ignoredups and ignorespace
-HISTCONTROL=ignoredups:ignorespace
+alias ssh='ssh -A -o ConnectTimeout=3 -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null'
+alias gw1="ssh -A luoyuzhi@login1.qima-inc.com"
+alias gw2="ssh -A luoyuzhi@login2.qima-inc.com"
+alias qagw1="ssh -A luoyuzhi@login1.qa.qima-inc.com"
+alias qagw2="ssh -A luoyuzhi@login2.qa.qima-inc.com"
+export PATH=/usr/local/maven/bin:$PATH:
 
-# append to the history file, don't overwrite it
-shopt -s histappend
+alias gst='git status'
+alias gbr='git branch'
+alias gck='git checkout'
+alias gckb='git checkout -b'
+export GREP_OPTIONS="--color=auto"
 
-# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=1000
-HISTFILESIZE=2000
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 
-# check the window size after each command and, if necessary,
-# update the values of LINES and COLUMNS.
-shopt -s checkwinsize
-
-# make less more friendly for non-text input files, see lesspipe(1)
-[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
-
-case "$TERM" in
-  xterm-color) color_prompt=yes;;
-esac
-
-# User specific aliases and functions
-
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
-
-# enable color support of ls and also add handy aliases
-if [ -x /usr/bin/dircolors ]; then
-  test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-  alias ls='ls --color=auto'
-  #alias dir='dir --color=auto'
-  #alias vdir='vdir --color=auto'
-
-  alias grep='grep --color=auto'
-  alias fgrep='fgrep --color=auto'
-  alias egrep='egrep --color=auto'
-fi
-
-# User prompt
-export PS1="\u@\h:\W\\ $ "
+export PATH=/usr/local/php5/bin:$PATH
+export PATH=$PATH:/usr/local/mysql/bin
+export PATH=$PATH:/usr/local/gradle-4.4.1/bin
+export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.aliyun.com/homebrew/homebrew-bottles

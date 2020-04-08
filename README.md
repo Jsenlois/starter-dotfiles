@@ -17,3 +17,12 @@ Then `cd .dotfiles` and run my simple install bash script
 # Like this?
 
 Check out my personal dotfiles [here](https://github.com/briancain/dotfiles) on Github. Feel free to take what you find useful!
+
+### useful code
+- 1、校验命令是否安装
+```
+if ! [ -x "$(command -v git)" ]; then
+  echo 'Error: git is not installed.' >&2
+  exit 1
+fi
+```

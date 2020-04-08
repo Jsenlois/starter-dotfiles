@@ -15,11 +15,6 @@ function determine_package_manager() {
     export OSPACKMAN="aptget"
     return;
   }
-  which brew > /dev/null && {
-    echo "homebrew"
-    export OSPACKMAN="homebrew"
-    return;
-  }
 }
 
 # function setup_bash() {
